@@ -13,7 +13,7 @@ local ScenarioFramework = import('/lua/ScenarioFramework.lua')
 
         if (ScenarioInfo.Options.opt_Survival_NavySpawnInterval == nil) then
             ScenarioInfo.Options.opt_Survival_NavySpawnInterval = 4
-        else
+        else     
             ScenarioInfo.Options.opt_Survival_NavySpawnInterval = tonumber(ScenarioInfo.Options.opt_Survival_NavySpawnInterval)
         end
         
