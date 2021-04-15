@@ -5,9 +5,9 @@
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
 
-local Markers = import("/maps/survival_stranded.v0015/Markers.lua")
-local Navyplatoons = import("/maps/survival_stranded.v0015/Navyplatoons.lua")
-local Areas = import("/maps/survival_stranded.v0015/Areas.lua")
+local Markers = import("/maps/survival_stranded.v0016/Markers.lua")
+local Navyplatoons = import("/maps/survival_stranded.v0016/Navyplatoons.lua")
+local Areas = import("/maps/survival_stranded.v0016/Areas.lua")
 
 -- pick a random transport platoon  -- check
 -- pick a random transport spawn    -- check

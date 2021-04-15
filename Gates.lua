@@ -1,8 +1,8 @@
-local Markers = import("/maps/survival_stranded.v0015/Markers.lua")
+local Markers = import("/maps/survival_stranded.v0016/Markers.lua")
 local Utilities = import('/lua/utilities.lua')
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
-local Gateplatoons = import("/maps/survival_stranded.v0015/Gateplatoons.lua")
+local Gateplatoons = import("/maps/survival_stranded.v0016/Gateplatoons.lua")
 
 
 
@@ -47,6 +47,28 @@ function OnStart()
 		EnemyGate2:SetProductionPerSecondEnergy(9999)
 		EnemyGate2:SetProductionPerSecondMass(9999)
 		EnemyGate2:SetCustomName("Enemy Gate 2")
+
+        local pos = ScenarioUtils.MarkerToPosition("gate-3")
+        --spawn gate 2
+        EnemyGate3 = CreateUnitHPR( gateFaction, "ARMY_ENEMY", pos[1], pos[2], pos[3], 0,0,0)
+		EnemyGate3:SetMaxHealth(110000)
+		EnemyGate3:SetHealth(nil,110000)
+		EnemyGate3:SetReclaimable(false)
+		EnemyGate3:SetCapturable(false)
+		EnemyGate3:SetProductionPerSecondEnergy(9999)
+		EnemyGate3:SetProductionPerSecondMass(9999)
+		EnemyGate3:SetCustomName("Enemy Gate 3")
+
+        local pos = ScenarioUtils.MarkerToPosition("gate-4")
+        --spawn gate 2
+        EnemyGate4 = CreateUnitHPR( gateFaction, "ARMY_ENEMY", pos[1], pos[2], pos[3], 0,0,0)
+		EnemyGate4:SetMaxHealth(110000)
+		EnemyGate4:SetHealth(nil,110000)
+		EnemyGate4:SetReclaimable(false)
+		EnemyGate4:SetCapturable(false)
+		EnemyGate4:SetProductionPerSecondEnergy(9999)
+		EnemyGate4:SetProductionPerSecondMass(9999)
+		EnemyGate4:SetCustomName("Enemy Gate 4")
         --ScenarioFramework.CreateVisibleAreaAtUnit(visionRadius, unit, 0, GetArmyBrain(armyName))
         --ScenarioFramework.CreateVisibleAreaAtUnit(60, ScenarioInfo.ArnoldCDR, 0, ArmyBrains[Player1])
         --ScenarioFramework.CreateVisibleAreaAtUnit(60, EnemyGate1, 0, GetArmyBrain("ARMY_1"))
@@ -60,12 +82,16 @@ function OnStart()
         for k, player in players do   
         ScenarioFramework.CreateVisibleAreaAtUnit(15, EnemyGate1, 0, GetArmyBrain(player))
         ScenarioFramework.CreateVisibleAreaAtUnit(15, EnemyGate2, 0, GetArmyBrain(player))
+        ScenarioFramework.CreateVisibleAreaAtUnit(15, EnemyGate3, 0, GetArmyBrain(player))
+        ScenarioFramework.CreateVisibleAreaAtUnit(15, EnemyGate4, 0, GetArmyBrain(player))
         end
+
+
 
           -- maximum number of group spawns
     local maximum = 1000
     local thread = ForkThread(Spawntheunitsthread, maximum)
-
+    local thread2 = ForkThread(Spawntheunitsthread2, maximum)
 end
 
 
@@ -120,6 +146,115 @@ function Spawntheunitsthread(maximum)
                 spawn = ScenarioUtils.MarkerToPosition("gate-1")
             else
 			spawn = ScenarioUtils.MarkerToPosition("gate-2")
+            end
+        end    
+
+        local attack = Markers.PickRandomPosition(Markers.dropAttackMarkers)
+        -- identify the AI 
+        local army = "ARMY_ENEMY"
+        -- Call Landplatoons lua and pick a random army group
+        local group = Gateplatoons.RandomArmyGroup()    
+        local units = Gateplatoons.SpawnArmyGroup(group, army, spawn)
+ 
+            -- Randomizer pick a random function - In this case a radmon attack more for groups of units. 
+            function a()
+                local rand = Utilities.GetRandomInt(1,3)
+                if (rand == 1) then
+                    position = ScenarioUtils.MarkerToPosition("attackpointrand1")
+                    IssueFormAggressiveMove(units, position, 'GrowthFormation', 0)
+                elseif (rand == 2) then
+                    IssueFormAggressiveMove(units, attack, 'GrowthFormation', 0)
+                elseif (rand == 3) then
+                    IssueFormMove(units, attack, 'AttackFormation', 0)    
+                end
+            end
+
+            function b()
+                local rand = Utilities.GetRandomInt(1,3)
+                if (rand == 1) then
+                    position = ScenarioUtils.MarkerToPosition("attackpointrand2")
+                    IssueFormAggressiveMove(units, position, 'GrowthFormation', 0)
+                elseif (rand == 2) then
+                    IssueFormAggressiveMove(units, attack, 'GrowthFormation', 0)
+                elseif (rand == 3) then
+                    IssueFormMove(units, attack, 'AttackFormation', 0)
+                end
+                
+            end
+
+            function execute_random(f_tbl)
+                local random_index = math.floor(Random() * table.getn(f_tbl)) + 1 --pick random index from 1 to #f_tbl
+                f_tbl[random_index]() --execute function at the random_index we've picked
+            end
+
+            -- prepare/fill our function table
+            local funcs = {a, b}
+
+            for i = 0, 20 do
+                execute_random(funcs)
+            end
+
+
+            --- local formationTable = {
+           -- 'AttackFormation',
+           -- 'GrowthFormation',
+           -- 'SixWideFormation',
+           -- 'TravellingFormation',
+           -- }
+
+end
+---- break here
+end
+
+function Spawntheunitsthread2(maximum)
+
+    -- wait time before Land starts to spawn default 35 + )
+    local seconds = 10 + ScenarioInfo.Options.opt_Survival_BuildTime
+ 
+    --- seconds before Land starts to attack
+    WaitSeconds (seconds)
+    -- Warn of incomming Land attacks
+    --ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').X01_M02_045, nil, true) 
+   
+        -- get number of human armies
+        --local armies = ListArmies()
+        --local playerCount = table.getn(armies) - 1
+
+        local count = 0
+        while count < maximum do
+        
+            --- adjust number of units dependant on players in game
+        --if  playerCount == 1 then
+        --   WaitSeconds (ScenarioInfo.Options.opt_Survival_GateSpawnInterval * 2)
+        --end
+
+        -- seconds in between each Land group spawn  ( Set manually as want to test will add in option later 15/04/2021) 
+        WaitSeconds (20) 
+        count = count + 1
+       
+        if count > maximum then
+            break
+        elseif EnemyGate3.Dead and EnemyGate4.Dead then
+            break
+        end
+
+       -- if unit.Dead then
+       --     break
+       --   end
+
+        --function OnStart()
+        local r = Utilities.GetRandomInt(1,2)
+        if (r == 1) then
+			if EnemyGate3.Dead then
+                spawn = ScenarioUtils.MarkerToPosition("gate-4")
+            else
+            spawn = ScenarioUtils.MarkerToPosition("gate-3")
+            end
+		elseif (r == 2) then
+            if EnemyGate4.Dead then
+                spawn = ScenarioUtils.MarkerToPosition("gate-3")
+            else
+			spawn = ScenarioUtils.MarkerToPosition("gate-4")
             end
         end    
 

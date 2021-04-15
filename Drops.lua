@@ -5,8 +5,8 @@
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
 
-local Markers = import("/maps/survival_stranded.v0015/Markers.lua")
-local Platoons = import("/maps/survival_stranded.v0015/Platoons.lua")
+local Markers = import("/maps/survival_stranded.v0016/Markers.lua")
+local Platoons = import("/maps/survival_stranded.v0016/Platoons.lua")
 -- added for AI Brain safe path finding
 local AIAttackUtils = import('/lua/ai/aiattackutilities.lua')
 

@@ -10,8 +10,8 @@ local ScenarioFramework = import('/lua/ScenarioFramework.lua')
 function GametimegoalFunction()
     -- TOTAL Game Time (45 mins)
     local GameTimeLength = 2700
-    --- Forumla to work out game time remainining (Including startup time)
-    return math.floor((((GameTimeLength + ScenarioInfo.Options.opt_Survival_BuildTime) - GetGameTimeSeconds())/60))-1
+    --- Forumla to work out game time remainining (Including startup time) math.floor(x + 0.5) (to round up or down to the nearest whole)
+    return math.floor((((GameTimeLength + ScenarioInfo.Options.opt_Survival_BuildTime) - GetGameTimeSeconds())/60) +0.5)
 end
 
 --Forkthread (UpdateGameTimeObjective) & Check for Win condition
@@ -30,7 +30,7 @@ function UpdateGameTimeObjective()
             local fade = 9;
     
             -- what other options are there?
-            local alignment = 'lefttop';
+            local alignment = 'center';
             -- what format should the color be in?
             local color = '00bfff';
             -- alignment
@@ -100,7 +100,7 @@ function OnStart()
         local fade = 9;
 
         -- what other options are there?
-        local alignment = 'lefttop';
+        local alignment = 'center';
 
         -- what format should the color be in?
         local color = '00bfff';

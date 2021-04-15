@@ -4,7 +4,7 @@
 
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
-local Wrecks = import("/maps/survival_stranded.v0015/Wrecks.lua")
+local Wrecks = import("/maps/survival_stranded.v0016/Wrecks.lua")
 
 cachelandPlatoons = { }
 
