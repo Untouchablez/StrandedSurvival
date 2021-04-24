@@ -1,8 +1,8 @@
-local Markers = import("/maps/survival_stranded.v0016/Markers.lua")
+local Markers = import("/maps/survival_stranded.v0017/Markers.lua")
 local Utilities = import('/lua/utilities.lua')
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
-local Gateplatoons = import("/maps/survival_stranded.v0016/Gateplatoons.lua")
+local Gateplatoons = import("/maps/survival_stranded.v0017/Gateplatoons.lua")
 
 
 
@@ -89,30 +89,31 @@ function OnStart()
 
 
           -- maximum number of group spawns
-    local maximum = 1000
-    local thread = ForkThread(Spawntheunitsthread, maximum)
-    local thread2 = ForkThread(Spawntheunitsthread2, maximum)
+    --local maximum = 1000
+    --local thread = ForkThread(Spawntheunitsthread, maximum)
+    --local thread2 = ForkThread(Spawntheunitsthread2, maximum)
 end
 
 
 
 
-function Spawntheunitsthread(maximum)
+function Spawntheunitsthread()
 
     -- wait time before Land starts to spawn default 35 + )
     local seconds = 10 + ScenarioInfo.Options.opt_Survival_BuildTime
  
     --- seconds before Land starts to attack
     WaitSeconds (seconds)
-    -- Warn of incomming Land attacks
-    --ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').X01_M02_045, nil, true) 
+    while true do
+        -- Warn of incomming Land attacks
+        --ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').X01_M02_045, nil, true) 
    
         -- get number of human armies
         --local armies = ListArmies()
         --local playerCount = table.getn(armies) - 1
 
-        local count = 0
-        while count < maximum do
+        --local count = 0
+       -- while count < maximum do
         
             --- adjust number of units dependant on players in game
         --if  playerCount == 1 then
@@ -121,11 +122,11 @@ function Spawntheunitsthread(maximum)
 
         -- seconds in between each Land group spawn  
         WaitSeconds (ScenarioInfo.Options.opt_Survival_GateSpawnInterval) 
-        count = count + 1
+       -- count = count + 1
        
-        if count > maximum then
-            break
-        elseif EnemyGate1.Dead and EnemyGate2.Dead then
+        --if count > maximum then
+       --     break
+        if EnemyGate1.Dead and EnemyGate2.Dead then
             break
         end
 
@@ -202,17 +203,18 @@ function Spawntheunitsthread(maximum)
            -- 'TravellingFormation',
            -- }
 
-end
+    end
 ---- break here
 end
 
-function Spawntheunitsthread2(maximum)
+function Spawntheunitsthread2()
 
     -- wait time before Land starts to spawn default 35 + )
     local seconds = 10 + ScenarioInfo.Options.opt_Survival_BuildTime
  
     --- seconds before Land starts to attack
     WaitSeconds (seconds)
+    while true do
     -- Warn of incomming Land attacks
     --ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').X01_M02_045, nil, true) 
    
@@ -220,8 +222,8 @@ function Spawntheunitsthread2(maximum)
         --local armies = ListArmies()
         --local playerCount = table.getn(armies) - 1
 
-        local count = 0
-        while count < maximum do
+        --local count = 0
+        --while count < maximum do
         
             --- adjust number of units dependant on players in game
         --if  playerCount == 1 then
@@ -230,11 +232,11 @@ function Spawntheunitsthread2(maximum)
 
         -- seconds in between each Land group spawn  ( Set manually as want to test will add in option later 15/04/2021) 
         WaitSeconds (20) 
-        count = count + 1
+       -- count = count + 1
        
-        if count > maximum then
-            break
-        elseif EnemyGate3.Dead and EnemyGate4.Dead then
+        --if count > maximum then
+        --    break
+        if EnemyGate3.Dead and EnemyGate4.Dead then
             break
         end
 
@@ -311,6 +313,6 @@ function Spawntheunitsthread2(maximum)
            -- 'TravellingFormation',
            -- }
 
-end
----- break here
+    end
+    ---- break here
 end

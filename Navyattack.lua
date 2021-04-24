@@ -5,9 +5,9 @@
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
 
-local Markers = import("/maps/survival_stranded.v0016/Markers.lua")
-local Navyplatoons = import("/maps/survival_stranded.v0016/Navyplatoons.lua")
-local Areas = import("/maps/survival_stranded.v0016/Areas.lua")
+local Markers = import("/maps/survival_stranded.v0017/Markers.lua")
+local Navyplatoons = import("/maps/survival_stranded.v0017/Navyplatoons.lua")
+local Areas = import("/maps/survival_stranded.v0017/Areas.lua")
 
 -- pick a random transport platoon  -- check
 -- pick a random transport spawn    -- check
@@ -22,28 +22,29 @@ local Areas = import("/maps/survival_stranded.v0016/Areas.lua")
 -- wait time before navy starts to spawn
 local seconds = 180 + ScenarioInfo.Options.opt_Survival_BuildTime
 
-function OnStart()
+--function OnStart()
     
     -- maximum number of group spawns
-    local maximum = 1000
-    local thread = ForkThread(Spawntheunitsthread, maximum)
+    --local maximum = 1000
+    --local thread = ForkThread(Spawntheunitsthread, maximum)
 
-end
+--end
 
 
-function Spawntheunitsthread(maximum)
+function Spawntheunitsthread()
     --- seconds before navy starts to attack
     WaitSeconds (seconds)
     -- Warn of incomming navy attacks
     ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').X01_M02_045, nil, true) 
-        local count = 0
-        while count < maximum do
+    while true do
+        --local count = 0
+        --while count < maximum do
         -- seconds in between each navy group spawn
         WaitSeconds (ScenarioInfo.Options.opt_Survival_NavySpawnInterval)
-        count = count + 1
-        if count > maximum then
-        break
-        end
+        --count = count + 1
+       -- if count > maximum then
+       -- break
+       -- end
     
 
         --function OnStart()
@@ -102,8 +103,8 @@ function Spawntheunitsthread(maximum)
         end
 
 
-end
----- break here
+    end
+    ---- break here
 end
 
 

@@ -2,22 +2,22 @@ local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
 
 -- Addtional
-local Areas = import("/maps/survival_stranded.v0016/Areas.lua")
-local Markers = import("/maps/survival_stranded.v0016/Markers.lua")
-local Platoons = import("/maps/survival_stranded.v0016/Platoons.lua")
-local Drops = import("/maps/survival_stranded.v0016/Drops.lua")
-local NavyPlatoons = import("/maps/survival_stranded.v0016/Navyplatoons.lua")
-local Navyattack = import("/maps/survival_stranded.v0016/Navyattack.lua")
-local LandPlatoons = import("/maps/survival_stranded.v0016/Landplatoons.lua")
-local Landattack = import("/maps/survival_stranded.v0016/Landattack.lua")
-local Defaultoptions = import("/maps/survival_stranded.v0016/Defaultoptions.lua")
-local Defenceobject = import("/maps/survival_stranded.v0016/Defenceobject.lua")
---local EnemyAI = import("/maps/survival_stranded.v0016/EnemyAI.lua")
-local allfactions = import("/maps/survival_stranded.v0016/Allfactions.lua")
-local Gates = import("/maps/survival_stranded.v0016/Gates.lua")
-local GatePlatoons = import("/maps/survival_stranded.v0016/Gateplatoons.lua")
-local Wrecks = import("/maps/survival_stranded.v0016/Wrecks.lua")
-local GameTime = import("/maps/survival_stranded.v0016/GameTime.lua")
+local Areas = import("/maps/survival_stranded.v0017/Areas.lua")
+local Markers = import("/maps/survival_stranded.v0017/Markers.lua")
+local Platoons = import("/maps/survival_stranded.v0017/Platoons.lua")
+local Drops = import("/maps/survival_stranded.v0017/Drops.lua")
+local NavyPlatoons = import("/maps/survival_stranded.v0017/Navyplatoons.lua")
+local Navyattack = import("/maps/survival_stranded.v0017/Navyattack.lua")
+local LandPlatoons = import("/maps/survival_stranded.v0017/Landplatoons.lua")
+local Landattack = import("/maps/survival_stranded.v0017/Landattack.lua")
+local Defaultoptions = import("/maps/survival_stranded.v0017/Defaultoptions.lua")
+local Defenceobject = import("/maps/survival_stranded.v0017/Defenceobject.lua")
+--local EnemyAI = import("/maps/survival_stranded.v0017/EnemyAI.lua")
+local allfactions = import("/maps/survival_stranded.v0017/Allfactions.lua")
+local Gates = import("/maps/survival_stranded.v0017/Gates.lua")
+local GatePlatoons = import("/maps/survival_stranded.v0017/Gateplatoons.lua")
+local Wrecks = import("/maps/survival_stranded.v0017/Wrecks.lua")
+local GameTime = import("/maps/survival_stranded.v0017/GameTime.lua")
 
 function OnPopulate()
     ScenarioUtils.InitializeArmies()
@@ -39,51 +39,52 @@ function OnStart(self)
     Areas.OnStart()
 	Markers.OnStart()
 	
-    --Drops
+    --DropPlattoons
     Platoons.OnStart()
-    Drops.OnStart()
+    --Drops.OnStart()
     ForkThread(Platoons.OnTick) 
+    --Drops
+    ForkThread(Drops.KeepThemDroppingThread)
 
-    --Navy
+    --Navyplatoons
     NavyPlatoons.OnStart()
     ForkThread(NavyPlatoons.OnTick)  
-    Navyattack.OnStart()
+    -- Navyattack
+    --Navyattack.OnStart()
+    ForkThread(Navyattack.Spawntheunitsthread)
     
     --Land
     LandPlatoons.OnStart()
     ForkThread(LandPlatoons.OnTick)  
-    Landattack.OnStart()
+    --* Landattack.OnStart()
+    ForkThread(Landattack.Spawntheunitsthread)
+
+
+
 
     -- Defence object timer / objective
     Defenceobject.OnStart()
     ForkThread(Defenceobject.UpdateGameTimeObjective)
     
     -- other scripts
-	doscript("/maps/survival_stranded.v0016/PlayableArea.lua")
-    doscript("/maps/survival_stranded.v0016/message.lua")
-    doscript("/maps/survival_stranded.v0016/AIHelp.lua")
-    doscript("/maps/survival_stranded.v0016/EnemyAI.lua")
-    --doscript("/maps/survival_stranded.v0016/.lua")
+	doscript("/maps/survival_stranded.v0017/PlayableArea.lua")
+    doscript("/maps/survival_stranded.v0017/message.lua")
+    doscript("/maps/survival_stranded.v0017/AIHelp.lua")
+    doscript("/maps/survival_stranded.v0017/EnemyAI.lua")
+    --doscript("/maps/survival_stranded.v0017/.lua")
     
     ---gameoptions
     Defaultoptions.OnStart()
  --- Update players on remaining time every 60 seconds
     ForkThread(GameTime.UpdateGameTimeObjective)
 
-
-
-   
-    ---Message.OnStart()
-    --ForkThread(Message.PrintGameTimeForkThread)
-   
-
-
-
-
-    ---gates
-    Gates.OnStart()
+    ---Gateplatoons
     GatePlatoons.OnStart()
     ForkThread(GatePlatoons.OnTick)  
+    -- Gates
+    Gates.OnStart()
+    ForkThread(Gates.Spawntheunitsthread)
+    ForkThread(Gates.Spawntheunitsthread2)
     
 	-- misc settings
 	ScenarioInfo.Options.Victory = 'sandbox'	-- custom victory condition

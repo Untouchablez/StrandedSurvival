@@ -5,9 +5,9 @@
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
 
-local Markers = import("/maps/survival_stranded.v0016/Markers.lua")
-local Landplatoons = import("/maps/survival_stranded.v0016/Landplatoons.lua")
-local Areas = import("/maps/survival_stranded.v0016/Areas.lua")
+local Markers = import("/maps/survival_stranded.v0017/Markers.lua")
+local Landplatoons = import("/maps/survival_stranded.v0017/Landplatoons.lua")
+local Areas = import("/maps/survival_stranded.v0017/Areas.lua")
 
 -- pick a random transport platoon  -- check
 -- pick a random transport spawn    -- check
@@ -22,70 +22,44 @@ local Areas = import("/maps/survival_stranded.v0016/Areas.lua")
 -- wait time before Land starts to spawn default 35 + )
 local seconds = 35 + ScenarioInfo.Options.opt_Survival_BuildTime
 
-function OnStart()
+--* function OnStart()
     
     -- maximum number of group spawns
-    local maximum = 1000
-    local thread = ForkThread(Spawntheunitsthread, maximum)
+    --* local maximum = 1000
+    --* local thread = ForkThread(Spawntheunitsthread, maximum)
+    --* local thread = ForkThread(Spawntheunitsthread)
+  --* Spawntheunitsthread()
+--* end
 
-end
 
-
-function Spawntheunitsthread(maximum)
-    --- seconds before Land starts to attack
-    WaitSeconds (seconds)
-    -- Warn of incomming Land attacks
-    --ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').X01_M02_045, nil, true) 
+ -- * function Spawntheunitsthread(maximum)
+function Spawntheunitsthread()
+                --- seconds before Land starts to attack
+ WaitSeconds (seconds)
+                -- Warn of incomming Land attacks
+                --ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').X01_M02_045, nil, true) 
    
-        local count = 0
-        while count < maximum do
-        -- seconds in between each Land group spawn    
-        WaitSeconds (ScenarioInfo.Options.opt_Survival_LandSpawnInterval)
-        count = count + 1
-        if count > maximum then
-        break
-        end
-    
-
-        --function OnStart()
-
-
-         -- determine all the locations
-        ---this is used to spawn units inside a random area specified in area.lua rather from a marker
-        local area = Areas.PickRandomArea(Areas.spawnLandArea)
-
-        local spawn = Areas.PickRandomPointInArea(area)
-        --USe this if you want to use markers instead of areas
-        --local spawn = Markers.PickRandomPosition(Markers.Landspawnmarkers)
-        local attack = Markers.PickRandomPosition(Markers.dropAttackMarkers)
-        -- identify the AI 
-        local army = "ARMY_ENEMY"
-        -- Call Landplatoons lua and pick a random army group
-        local group = Landplatoons.RandomArmyGroup()    
-        local units = Landplatoons.SpawnArmyGroup(group, army, spawn)
-
-
-        --PrintText(count, 25 + 10, '00bfff', 9, 'center');
+                --* local count = 0
+                --* while count < maximum do
+    while true do
+            -- seconds in between each Land group spawn    
+            WaitSeconds (ScenarioInfo.Options.opt_Survival_LandSpawnInterval)
+            --* count = count + 1
+            --* if count > maximum then
+            --*
+            --* break
+            --* end
         
-        --LOG("WHERE IT FAILS")
-        --blueprint, army, x, y, z, pitch, yaw, roll
-        --CreateUnitHPR(blueprint, army, 10, 10, 10, 0, 0, 0)
-        --CreateUnitHPR('UEB0101','ARMY_ENEMY',270,50,440,0,0,0)
-        --CreateUnitHPR('UEB0101','ARMY_ENEMY',260,40,420,0,0,0)
-        --local SpawnArmyGroup = 
-        --local SpawnArmyGroup(group, army, spawn)
-        --LOG(repr(Landplatoons))
-        
-        ---Landplatoons.SpawnArmyGroup(group, army, spawn)
-        --local LandPlatoons.SpawnArmyGroup(group, army, spawn)
-        --CreateArmyGroup(self.AIBrain.Name, groupName, true)
-        --CreateArmyGroup('ARMY_ENEMY', group, true);
-        --PrintText("WORKING UO TO HERE")
-        --local Landplatoons = Landplatoons.SpawnArmyGroup(group, army, spawn)
-        
-            --local math = require("math")
 
--- Randomizer pick a random function - In this case a radmon attack more for groups of units. 
+            --function OnStart()
+
+
+            local area = Areas.PickRandomArea(Areas.spawnLandArea)
+            local spawn = Areas.PickRandomPointInArea(area)
+            local attack = Markers.PickRandomPosition(Markers.dropAttackMarkers)
+            local army = "ARMY_ENEMY"
+            local group = Landplatoons.RandomArmyGroup()    
+            local units = Landplatoons.SpawnArmyGroup(group, army, spawn) 
             function a()
                 IssueFormMove(units, attack, 'GrowthFormation', 0)
             end
@@ -106,9 +80,10 @@ function Spawntheunitsthread(maximum)
                 execute_random(funcs)
             end
 
-
-end
----- break here
+    end
+        --*break
+        --+ end
+        ---- break here
 end
 
 

@@ -4,7 +4,7 @@
 
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
-local Defenceobject = import("/maps/survival_stranded.v0016/Defenceobject.lua")
+local Defenceobject = import("/maps/survival_stranded.v0017/Defenceobject.lua")
   
 do
 
@@ -31,7 +31,7 @@ do
 
          ---- testing
          Gametimegoal = Defenceobject.GametimegoalFunction()
-         StartupTime = ScenarioInfo.Options.opt_Survival_BuildTime
+         StartupTime = ScenarioInfo.Options.opt_Survival_BuildTime/60
          --Survival_DefUnit:SetCustomName("Time " .. Gametimegoal .. " Minutes Remaining ")
          PrintText(offset .. "Time " .. Gametimegoal .. " Minutes To Survive ", size + 10, color, fade, alignment);
          PrintText(offset .. offset .. "Build Time " .. StartupTime .. " Minutes ", size - 3, color, fade, alignment);
