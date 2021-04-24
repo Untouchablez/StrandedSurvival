@@ -4,8 +4,8 @@
 
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
-local Markers = import("/maps/survival_stranded.v0017/Markers.lua")
-local Defenceobject = import("/maps/survival_stranded.v0017/Defenceobject.lua")
+local Markers = import("/maps/survival_stranded.v0018/Markers.lua")
+local Defenceobject = import("/maps/survival_stranded.v0018/Defenceobject.lua")
 
 -- determine all the locations
 local spawn = Markers.PickRandomPosition(Markers.destenemynuke)

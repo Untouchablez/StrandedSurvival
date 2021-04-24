@@ -1,4 +1,4 @@
-local Defenceobject = import("/maps/survival_stranded.v0017/Defenceobject.lua")
+local Defenceobject = import("/maps/survival_stranded.v0018/Defenceobject.lua")
 
 
 function UpdateGameTimeObjective()
