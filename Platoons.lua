@@ -139,7 +139,7 @@ local function CreateCachedPlatoons(army, identifier)
     local tblNode = Scenario.Armies[army].Units
 
     -- go find up to 20 groups
-    for k = 1, 20 do 
+    for k = 1, 30 do 
         -- construct the name of the unit group x
         local name = identifier .. k 
 

@@ -157,15 +157,40 @@ function Spawntheunitsthread()
         local group = Gateplatoons.RandomArmyGroup()    
         local units = Gateplatoons.SpawnArmyGroup(group, army, spawn)
  
-            -- Randomizer pick a random function - In this case a radmon attack more for groups of units. 
+            -- Randomizer pick a random function - In this case a radmon attack move for groups of units and random path to tyarget. 
             function a()
                 local rand = Utilities.GetRandomInt(1,3)
                 if (rand == 1) then
+                    if spawn == ScenarioUtils.MarkerToPosition("gate-1") then
+                            
+                        local rand2 = Utilities.GetRandomInt(1,2)
+                        if (rand2 == 1) then
+                            position = ScenarioUtils.MarkerToPosition("attackpointrand3")
+                            IssueFormAggressiveMove(units, position, 'GrowthFormation', 0)
+                            elseif (rand2 == 2) then
+                            position = ScenarioUtils.MarkerToPosition("attackpointrand4")
+                            IssueFormAggressiveMove(units, position, 'GrowthFormation', 0)
+                        end
+                        
+                        elseif spawn == ScenarioUtils.MarkerToPosition("gate-2") then
+                            
+                        local rand3 = Utilities.GetRandomInt(1,2)
+                        if (rand3 == 1) then
+                            position = ScenarioUtils.MarkerToPosition("attackpointrand5")
+                            IssueFormAggressiveMove(units, position, 'GrowthFormation', 0)
+                            elseif (rand3 == 2) then
+                            position = ScenarioUtils.MarkerToPosition("attackpointrand6")
+                            IssueFormAggressiveMove(units, position, 'GrowthFormation', 0)
+                        end    
+
+                    end
+
                     position = ScenarioUtils.MarkerToPosition("attackpointrand1")
                     IssueFormAggressiveMove(units, position, 'GrowthFormation', 0)
-                elseif (rand == 2) then
+
+                    elseif (rand == 2) then
                     IssueFormAggressiveMove(units, attack, 'GrowthFormation', 0)
-                elseif (rand == 3) then
+                    elseif (rand == 3) then
                     IssueFormMove(units, attack, 'AttackFormation', 0)    
                 end
             end
@@ -173,6 +198,31 @@ function Spawntheunitsthread()
             function b()
                 local rand = Utilities.GetRandomInt(1,3)
                 if (rand == 1) then
+
+                    if spawn == ScenarioUtils.MarkerToPosition("gate-1") then
+                            
+                        local rand2 = Utilities.GetRandomInt(1,2)
+                        if (rand2 == 1) then
+                            position = ScenarioUtils.MarkerToPosition("attackpointrand3")
+                            IssueFormAggressiveMove(units, position, 'GrowthFormation', 0)
+                            elseif (rand2 == 2) then
+                            position = ScenarioUtils.MarkerToPosition("attackpointrand4")
+                            IssueFormAggressiveMove(units, position, 'GrowthFormation', 0)
+                        end
+                        
+                        elseif spawn == ScenarioUtils.MarkerToPosition("gate-2") then
+                            
+                        local rand3 = Utilities.GetRandomInt(1,2)
+                        if (rand3 == 1) then
+                            position = ScenarioUtils.MarkerToPosition("attackpointrand5")
+                            IssueFormAggressiveMove(units, position, 'GrowthFormation', 0)
+                            elseif (rand3 == 2) then
+                            position = ScenarioUtils.MarkerToPosition("attackpointrand6")
+                            IssueFormAggressiveMove(units, position, 'GrowthFormation', 0)
+                        end    
+                          
+                    end
+
                     position = ScenarioUtils.MarkerToPosition("attackpointrand2")
                     IssueFormAggressiveMove(units, position, 'GrowthFormation', 0)
                 elseif (rand == 2) then
@@ -188,7 +238,7 @@ function Spawntheunitsthread()
                 f_tbl[random_index]() --execute function at the random_index we've picked
             end
 
-            -- prepare/fill our function table
+            -- prepare/fill our function table 
             local funcs = {a, b}
 
             for i = 0, 20 do

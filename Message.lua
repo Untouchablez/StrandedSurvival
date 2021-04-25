@@ -5,6 +5,7 @@
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
 local Defenceobject = import("/maps/survival_stranded.v0019/Defenceobject.lua")
+local MapVersion = import("/maps/survival_stranded.v0019/survival_stranded_scenario.lua")
   
 do
 
@@ -38,8 +39,7 @@ do
          PrintText(" ", size + 10, color, fade, alignment);
 
         -- print title
-       
-        PrintText(offset .. "Survival Stranded", size + 10, color, fade, alignment);
+        PrintText(offset .. "Survival Stranded Version: " .. MapVersion.ScenarioInfo.map_version, size + 10, color, fade, alignment);
         PrintText(offset .. offset .. "Made By GaryTheGoat", size - 3, color, fade, alignment);
         PrintText(offset .. offset .. "Help from Jip/Jammer: Coding", size - 4, color, fade, alignment);
         PrintText(offset .. offset .. "WasserMelon: Making the map look pretty!", size - 4, color, fade, alignment);

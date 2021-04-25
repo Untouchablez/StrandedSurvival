@@ -90,7 +90,7 @@ function OnStart()
 
     techIdentifier = techIdentifiers[techIntegral]
  
-    for k = 1, 20 do 
+    for k = 1, 30 do 
         -- construct the name of the unit group x
         local name = techIdentifier .. k 
 
@@ -141,7 +141,7 @@ function OnTick()
 
             cachenavyPlatoons = { }
 
-            for k = 1, 20 do 
+            for k = 1, 30 do 
                 -- construct the name of the unit group
                 
                 local name = techIdentifier .. k 
