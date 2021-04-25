@@ -21,10 +21,15 @@ function SpawnArmyGroup(tblData, army, position)
         
         local unit = CreateUnitHPR(bp, army, position[1], position[2], position[3], 0, 0, 0)
                        
-        -- Set the health mutiplier               
-        unit:SetMaxHealth(unit:GetMaxHealth() * ScenarioInfo.Options.opt_Survival_HealthMultiplier)               
-        unit:SetHealth(unit, unit:GetMaxHealth())
-        unit:SetVeterancy(5)
+    -- Set the health mutiplier
+    --- this is 5 times as setveterancy(5) does not work
+    unit:SetVeterancy(0)
+    -- unit:SetVeterancy(1)
+    -- unit:SetVeterancy(1)
+    -- unit:SetVeterancy(1)
+    -- unit:SetVeterancy(1)
+     unit:SetMaxHealth(unit:GetMaxHealth() * ScenarioInfo.Options.opt_Survival_HealthMultiplier)
+     unit:SetHealth(unit,unit:GetMaxHealth())
             -- Set the damadge multiplier
             for i = 1, unit:GetWeaponCount() do
                 local Weapon = unit:GetWeapon(i)
@@ -40,9 +45,15 @@ function SpawnArmyGroup(tblData, army, position)
     for k, bp in tblData.transportees do
         local unit = CreateUnitHPR(bp, army, position[1], position[2], position[3], 0, 0, 0)
 
-        -- Set the health mutiplier               
-        unit:SetMaxHealth(unit:GetMaxHealth() * ScenarioInfo.Options.opt_Survival_HealthMultiplier)               
-        unit:SetHealth(unit, unit:GetMaxHealth())
+    -- Set the health mutiplier
+    --- this is 5 times as setveterancy(5) does not work
+    unit:SetVeterancy(0)
+    -- unit:SetVeterancy(1)
+    -- unit:SetVeterancy(1)
+    -- unit:SetVeterancy(1)
+    -- unit:SetVeterancy(1)
+     unit:SetMaxHealth(unit:GetMaxHealth() * ScenarioInfo.Options.opt_Survival_HealthMultiplier)
+     unit:SetHealth(unit,unit:GetMaxHealth())
 
         table.insert(transportees, unit)
     end
