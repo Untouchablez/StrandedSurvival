@@ -1,8 +1,8 @@
-local Markers = import("/maps/survival_stranded.v0018/Markers.lua")
+local Markers = import("/maps/survival_stranded.v0019/Markers.lua")
 local Utilities = import('/lua/utilities.lua')
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
-local Gateplatoons = import("/maps/survival_stranded.v0018/Gateplatoons.lua")
+local Gateplatoons = import("/maps/survival_stranded.v0019/Gateplatoons.lua")
 
 
 
