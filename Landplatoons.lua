@@ -29,16 +29,28 @@ function SpawnArmyGroup(tblData, army, position)
     -- unit:SetVeterancy(1)
      unit:SetMaxHealth(unit:GetMaxHealth() * ScenarioInfo.Options.opt_Survival_HealthMultiplier)
      unit:SetHealth(unit,unit:GetMaxHealth())
-        -- Set the damadge multiplier
-        for i = 1, unit:GetWeaponCount() do
-            local Weapon = unit:GetWeapon(i)
-            if Weapon.Label ~= 'DeathWeapon' and Weapon.Label ~= 'DeathImpact' then
-                Weapon:AddDamageMod(Weapon:GetBlueprint().Damage * (ScenarioInfo.Options.opt_Survival_DamageMultiplier - 1))
+               -- Set the damadge multiplier
+               for i = 1, unit:GetWeaponCount() do
+                local Weapon = unit:GetWeapon(i)
+                --if Weapon.Label ~= 'DeathWeapon' and Weapon.Label ~= 'DeathImpact' then
+                    Weapon:AddDamageMod(Weapon:GetBlueprint().Damage * (ScenarioInfo.Options.opt_Survival_DamageMultiplier - 1))
+                --end
             end
-        end
-    
+            
+            --for i = 1, unit:GetWeaponCount() do
+            --local Weapon = unit:GetWeapon(i)
+            --Weapon:AddDamageMod(Weapon:GetBlueprint().Damage * ScenarioInfo.Options.opt_Survival_DamageMultiplier)
+            --for i = 1, unit:GetWeapon(i) do
+            --for i = 1, unit:GetWeaponCount() do
+            --local Weapon = unit:GetWeapon(i)
+            --Weapon:AddDamageMod(9999)
+            
+            --end
+
+
     
     table.insert(units, unit)
+    --LOG("check1: " .. repr(units))
     end
     return units
     
