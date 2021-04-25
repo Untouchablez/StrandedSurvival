@@ -30,7 +30,7 @@ do
     ForkThread(
         function ()
 
-            LOG("HI");
+            --LOG"HI");
           WaitSeconds(seconds);
         --ScenarioFramework.Dialogue(import('/maps/X1CA_003/X1CA_003_strings.lua').X03_M02_160, nil, true) -- ty champion pincess
 	    --ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').X01_M02_045, nil, true) -- Warn of incomming navy attacks
@@ -81,7 +81,7 @@ do
             error('*ERROR*Attempting to build nukes in a non-existent unit: '.. arg[arg['n']], 2)
         end
 
-        LOG("HI")
+        --LOG"HI")
         WaitSeconds(5)
         ScenarioFramework.Dialogue(import('/maps/X1CA_001/X1CA_001_strings.lua').TAUNT33, nil, true) --Sera Taunt4
         WaitSeconds(1)
@@ -97,16 +97,16 @@ do
         local launchedNuke = false
         local spawnedScathis1 = false
         local spawnedScathis2 = false
-        LOG("HI")
+        --LOG"HI")
         while not (launchedNuke and spawnedScathis1 and spawnedScathis2) do 
 
             local gameTime = Defenceobject.GametimegoalFunction()
-            LOG("WHILE")
-            LOG(repr(gameTime))
+            --LOG"WHILE")
+            --LOGrepr(gameTime))
 
             if not launchedNuke then 
                 if gameTime == 7  then
-                    LOG("nukes")
+                    --LOG"nukes")
                     ScenarioFramework.Dialogue(import('/maps/X1CA_004/X1CA_004_strings.lua').X04_M03_090, nil, true)
                     for i = 1,20 do
                         
@@ -120,7 +120,7 @@ do
 
             if not spawnedScathis1 then 
                 if gameTime == 5 then
-                    LOG("scathis1")
+                    --LOG"scathis1")
                     scathis = CreateUnitHPR("URL0401", army, 90,10,550,0,0,0);
                     IssueMove({scathis}, ScenarioUtils.MarkerToPosition("enemynukeloc-2"))
                     spawnedScathis1 = true 
@@ -129,7 +129,7 @@ do
 
             if not spawnedScathis2 then 
                 if gameTime == 5 then
-                    LOG("scathis2")
+                    --LOG"scathis2")
                     scathis = CreateUnitHPR("URL0401", army, 960,10,550,0,0,0);
                     IssueMove({scathis}, ScenarioUtils.MarkerToPosition("enemynukeloc-1"))
                     spawnedScathis2 = true

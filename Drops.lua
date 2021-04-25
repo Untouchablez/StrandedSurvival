@@ -74,7 +74,7 @@ function KeepThemDroppingThread()
         local drop = Markers.PickRandomPosition(Markers.dropTransportMarkers)
         local attack = Markers.PickRandomPosition(Markers.dropAttackMarkers)
 
-        --LOG(repr(attack))
+        ----LOGrepr(attack))
 
         -- spawn the units and attach them
         local army = "ARMY_ENEMY"
@@ -91,7 +91,7 @@ function KeepThemDroppingThread()
         )
 
         if ScenarioInfo.Debug then
-            LOG("Generator.Drops: " .. repr(path)) 
+            --LOG"Generator.Drops: " .. repr(path)) 
         end
 
         --**** Do not forget to import the markers**** give the transports their commands to navugate to safe points from spawn to target

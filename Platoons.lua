@@ -154,7 +154,7 @@ local function CreateCachedPlatoons(army, identifier)
     end
 
     -- give ourselves some feedback
-    LOG("We found " .. table.getn(cache) .. " unit groups for " .. identifier)
+    --LOG"We found " .. table.getn(cache) .. " unit groups for " .. identifier)
     CheckValidityOfCache(cache)
 
     return cache
@@ -185,11 +185,11 @@ function OnTick()
             -- we don't have more than three techs
             if techIntegral >= 3 then
                 techIntegral = 3
-                LOG("Transport tech is already maxed out: " .. techIntegral)
+                --LOG"Transport tech is already maxed out: " .. techIntegral)
             -- we're still below tech three, so keep going
             else
                 techIntegral = techIntegral + 1
-                LOG("Upgrading transport tech to " .. techIntegral)
+                --LOG"Upgrading transport tech to " .. techIntegral)
             end
 
             -- update the tech identifier

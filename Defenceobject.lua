@@ -54,7 +54,7 @@ end
 
 function OnStart()
 --do
-    --LOG("----- Initializing defense object...");
+    ----LOG"----- Initializing defense object...");
     local POS = ScenarioUtils.MarkerToPosition("SURVIVAL_CENTER_1");
 	Survival_DefUnit = CreateUnitHPR('UEC1901', "ARMY_ALLY", POS[1], POS[2], POS[3], 0,0,0);
 

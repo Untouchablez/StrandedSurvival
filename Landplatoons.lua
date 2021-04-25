@@ -16,7 +16,7 @@ end
 
 function SpawnArmyGroup(tblData, army, position)
     local units = { }
-    --LOG(HEEEEEEEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRRRRRRREEEEEEEE);
+    ----LOGHEEEEEEEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRRRRRRREEEEEEEE);
     for k, bp in tblData do 
     local unit = CreateUnitHPR(bp, army, position[1], position[2], position[3], 0, 0, 0)
     
@@ -138,10 +138,10 @@ function OnTick()
            
                 if techIntegral >= 5 then
                     techIntegral = 5
-                    LOG("land tech is already maxed out: " .. techIntegral)
+                    --LOG"land tech is already maxed out: " .. techIntegral)
                 else
                     techIntegral = techIntegral + 1
-                    LOG("Upgrading land tech to " .. techIntegral)
+                    --LOG"Upgrading land tech to " .. techIntegral)
                 end
              -- update the tech identifier
                 techIdentifier = techIdentifiers[(techIntegral)]
@@ -152,7 +152,7 @@ function OnTick()
                 -- construct the name of the unit group
                 
                 local name = techIdentifier .. k 
-                LOG("group name is" .. name)
+                --LOG"group name is" .. name)
 
                 -- check if the group exists
                 local group = ScenarioUtils.FindUnitGroup(name, tblNode)

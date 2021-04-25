@@ -65,14 +65,14 @@ function Spawntheunitsthread()
         local units = Navyplatoons.SpawnArmyGroup(group, army, spawn)
 
     
-        --LOG("WHERE IT FAILS")
+        ----LOG"WHERE IT FAILS")
         --blueprint, army, x, y, z, pitch, yaw, roll
         --CreateUnitHPR(blueprint, army, 10, 10, 10, 0, 0, 0)
         --CreateUnitHPR('UEB0101','ARMY_ENEMY',270,50,440,0,0,0)
         --CreateUnitHPR('UEB0101','ARMY_ENEMY',260,40,420,0,0,0)
         --local SpawnArmyGroup = 
         --local SpawnArmyGroup(group, army, spawn)
-        --LOG(repr(Navyplatoons))
+        ----LOGrepr(Navyplatoons))
         
         ---Navyplatoons.SpawnArmyGroup(group, army, spawn)
         --local NavyPlatoons.SpawnArmyGroup(group, army, spawn)

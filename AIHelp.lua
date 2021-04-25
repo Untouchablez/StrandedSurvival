@@ -118,17 +118,17 @@ ForkThread(function ()
         local AIHelp1 = false
         local AIHelp2 = false
         
-        LOG("HI")
+        --LOG"HI")
         while not (AIHelp1 and AIHelp2) do 
 
             local gameTime = Defenceobject.GametimegoalFunction()
-            LOG("WHILE")
-            LOG(repr(gameTime))
+            --LOG"WHILE")
+            --LOGrepr(gameTime))
 
             if not AIHelp1 then 
                 --26
                 if gameTime == 26  then
-                    LOG("AIHelp1")
+                    --LOG"AIHelp1")
                     local BS = CreateUnitHPR('UES0302',army, 370, 10, 1010, 0, 0, 0) --Battleship UEF
                     local SB = CreateUnitHPR('XES0205',army, 370, 10, 1010, 0, 0, 0) --Shield Boat UEF
                     local CB = CreateUnitHPR('UES0202',army, 370, 10, 1010, 0, 0, 0) --Cruiser Boat UEF
@@ -143,7 +143,7 @@ ForkThread(function ()
             end
             if not AIHelp2 then 
                 if gameTime == 26  then
-                    LOG("AIHelp2")
+                    --LOG"AIHelp2")
                     local BS = CreateUnitHPR('URS0302',army, 650, 10, 1010, 0, 0, 0) --Battleship CYB
                     local DE = CreateUnitHPR('URS0201',army, 650, 10, 1010, 0, 0, 0) --Destro CYB
                     local CBC = CreateUnitHPR('URS0202',army, 650, 10, 1010, 0, 0, 0) --Cruiser Boat  CYB

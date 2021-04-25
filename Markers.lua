@@ -34,7 +34,7 @@ function OnStart()
         
         if markers[name] then 
             table.insert(landspawnmarkers, markers[name].position)
-            --LOG("LandSpawnMarkers" .. repr(markers[name]))
+            ----LOG"LandSpawnMarkers" .. repr(markers[name]))
         end
     end
 
@@ -44,7 +44,7 @@ function OnStart()
         
         if markers[name] then 
             table.insert(dropTransportMarkers, markers[name].position)
-           -- LOG("droptransportmarkers" .. repr(markers[name]))
+           -- --LOG"droptransportmarkers" .. repr(markers[name]))
         end
     end
 
@@ -54,7 +54,7 @@ function OnStart()
        
         if markers[name] then 
             table.insert(dropAttackMarkers, markers[name].position)
-            --LOG("attackpointmarkers" .. repr(markers[name]))
+            ----LOG"attackpointmarkers" .. repr(markers[name]))
         end
     end
     
@@ -64,7 +64,7 @@ function OnStart()
        
         if markers[name] then 
             table.insert(spawnTransportMarkers, markers[name].position)
-           -- LOG("spawntransportsmarkers" .. repr(markers[name]))
+           -- --LOG"spawntransportsmarkers" .. repr(markers[name]))
         end
     end
 
@@ -76,7 +76,7 @@ function OnStart()
             local area = areas[name]
             local rect = Rect(area.rectangle[1], area.rectangle[2], area.rectangle[3], area.rectangle[4])
             table.insert(spawnNavyArea, rect)
-            --LOG("navySpawnMarkers" .. repr(markers[name]))
+            ----LOG"navySpawnMarkers" .. repr(markers[name]))
         end
     end   
 
