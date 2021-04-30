@@ -4,8 +4,8 @@
 
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
-local Defenceobject = import("/maps/survival_stranded.v0019/Defenceobject.lua")
-local MapVersion = import("/maps/survival_stranded.v0019/survival_stranded_scenario.lua")
+local Defenceobject = import("/maps/survival_stranded.v0020/Defenceobject.lua")
+local MapVersion = import("/maps/survival_stranded.v0020/survival_stranded_scenario.lua")
   
 do
 

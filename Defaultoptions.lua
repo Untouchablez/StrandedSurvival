@@ -50,6 +50,10 @@ local ScenarioFramework = import('/lua/ScenarioFramework.lua')
         if (ScenarioInfo.Options.opt_Wrecks == nil) then
             ScenarioInfo.Options.opt_Wrecks = 0
         end
+
+        if (ScenarioInfo.Options.opt_GameBreaker == nil) then
+            ScenarioInfo.Options.opt_GameBreaker = 0
+        end
         
 
 

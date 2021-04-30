@@ -239,4 +239,17 @@ options =
 			{ text = "10000x", help = "Because scouts should obviously one-shot ACUs!", key = 10000, },
 		},
 	},
+	{
+		default = 1,
+		label = "Survival: Enable GameBreakers",
+		help = "Disable or Enable Paragon and Yolona",
+		key = 'opt_GameBreaker',
+		pref = 'opt_GameBreaker',
+		values = {
+			{ text = "Disable Paragon & Yolona", help = "No Paragon and Yolona Oss", key = 0, },
+			{ text = "Disable Paragon", help = "No Paragon", key = 1, },
+			{ text = "Disable Yolona", help = "No Yolona Oss", key = 2, },
+			{ text = "Allow Paragon & Yolona", help = "Paragon and Yolona Oss is buildable GameBreaker!", key = 3, },
+		},
+	},
 };

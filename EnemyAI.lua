@@ -4,8 +4,8 @@
 
 local ScenarioUtils = import('/lua/sim/ScenarioUtilities.lua')
 local ScenarioFramework = import('/lua/ScenarioFramework.lua')
-local Markers = import("/maps/survival_stranded.v0019/Markers.lua")
-local Defenceobject = import("/maps/survival_stranded.v0019/Defenceobject.lua")
+local Markers = import("/maps/survival_stranded.v0020/Markers.lua")
+local Defenceobject = import("/maps/survival_stranded.v0020/Defenceobject.lua")
 
 -- determine all the locations
 local spawn = Markers.PickRandomPosition(Markers.destenemynuke)
@@ -25,8 +25,6 @@ do
      --   IssueNuke({Survival_NukeUnits}, ScenarioUtils.MarkerToPosition("SURVIVAL_CENTER_1") );
         
     ---IssueNuke({unit}, POS)   
-    
-    
     ForkThread(
         function ()
 
@@ -114,8 +112,6 @@ do
                     end
                     launchedNuke = true
                 end
-
-
             end
 
             if not spawnedScathis1 then 
@@ -153,6 +149,12 @@ do
 
         -- end
 
+
+
+
+
     end)
 end
+
+
 

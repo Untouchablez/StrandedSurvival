@@ -92,6 +92,7 @@ function OnStart()
 
 	Survival_DefUnit.OldOnKilled = Survival_DefUnit.OnKilled;
 
+    
 	Survival_DefUnit.OnKilled = function(self, instigator, type, overkillRatio)
 
 		--BroadcastMSG("The Black Sun has been destroyed by the Aeon Illuminate!", 8);
@@ -118,7 +119,7 @@ function OnStart()
 				
 		self.OldOnKilled(self, instigator, type, overkillRatio);
 
-		Survival_GameState = 3; --defenders defeat
+		--Survival_GameState = 3; --defenders defeat
 
 		for i, army in ListArmies() do
 
@@ -129,7 +130,7 @@ function OnStart()
 		end
 	end
 
-	Survival_DefLastHP = Survival_DefUnit:GetHealth();
+	--Survival_DefLastHP = Survival_DefUnit:GetHealth();
     
 
 end
